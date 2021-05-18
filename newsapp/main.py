@@ -22,11 +22,16 @@ def home():
         'pageSize': 100
     })
     articles = response.json()['articles']
-    for article in articles:
-        if article['content'] != None:
-            article['content'] = translator.translate(article['content'], dest='ha').text
-            article['description'] = translator.translate(article['description'], dest='ha').text
-
+    if articles:
+        for article in articles:
+            print(article['content'])
+            if article['content'] != None and article['description'] != None:
+                article['content'] = translator.translate(article['content'], dest='ha').text
+                article['description'] = translator.translate(article['description'], dest='ha').text
+    
+            else:
+                article['content'] = translator.translate("Empty", dest='ha').text
+                article['description'] = translator.translate("Empty", dest='ha').text
     return render_template('index.html', articles=articles)
 
 
