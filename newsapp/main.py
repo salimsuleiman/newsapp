@@ -1,7 +1,8 @@
 from flask import *
 import requests
 from googletrans import Translator
-
+import timeago, datetime
+import random
 
 translator = Translator()
 
@@ -24,6 +25,10 @@ def home():
     articles = response.json()['articles']
     if articles:
         for article in articles:
+            date = datetime.datetime.now()
+            print(date)
+            article['timeago'] = timeago.format(date, article['publishedAt'].split('T')[0])
+            article['views'] = random.randint(0, 1000)
             if article['content'] is not None and article['description'] is not None:
                 try:
                     article['content'] = translator.translate(article['content'], dest='ha').text

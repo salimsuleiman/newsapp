@@ -2,3 +2,4 @@ flask==1.1.2
 requests==2.25.1
 googletrans==4.0.0rc1
 gunicorn==20.1.0
+timeago==1.0.15
