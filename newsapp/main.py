@@ -3,11 +3,13 @@ import requests
 from googletrans import Translator
 import timeago, datetime
 import random
+import os
+
 
 translator = Translator()
 
-API_KEY ='c630ff8e6d8543d9bcd43e080ad78b81'
-'8468d3e24f614f959062cd9645b04e9d'
+API_KEY = os.environ.get('API_KEY')
+
 endpoint = 'https://newsapi.org/v2/top-headlines'
 app = Flask(__name__)
 
