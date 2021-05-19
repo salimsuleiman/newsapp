@@ -3,7 +3,7 @@ import requests
 from googletrans import Translator
 
 
-# translator = Translator()
+translator = Translator()
 
 API_KEY ='c630ff8e6d8543d9bcd43e080ad78b81'
 '8468d3e24f614f959062cd9645b04e9d'
@@ -24,10 +24,12 @@ def home():
     articles = response.json()['articles']
     if articles:
         for article in articles:
-            print(article['content'])
-            if article['content'] != None and article['description'] != None:
-                article['content'] = translator.translate(article['content'], dest='ha').text
-                article['description'] = translator.translate(article['description'], dest='ha').text
+            if article['content'] is not None and article['description'] is not None:
+                try:
+                    article['content'] = translator.translate(article['content'], dest='ha').text
+                    article['description'] = translator.translate(article['description'], dest='ha').text
+                except TypeError:
+                    pass
             else:
                 article['content'] = translator.translate("Empty", dest='ha').text
                 article['description'] = translator.translate("Empty", dest='ha').text
