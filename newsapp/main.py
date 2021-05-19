@@ -8,8 +8,7 @@ import os
 
 translator = Translator()
 
-API_KEY = os.environ.get('API_KEY')
-
+API_KEY ='c630ff8e6d8543d9bcd43e080ad78b81'
 endpoint = 'https://newsapi.org/v2/top-headlines'
 app = Flask(__name__)
 
