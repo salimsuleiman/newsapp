@@ -3,7 +3,7 @@ import requests
 from googletrans import Translator
 
 
-translator = Translator()
+# translator = Translator()
 
 API_KEY ='c630ff8e6d8543d9bcd43e080ad78b81'
 '8468d3e24f614f959062cd9645b04e9d'
@@ -13,26 +13,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    response = requests.get(
-        url=endpoint,
-        params={
-        "apikey": API_KEY,
-        "country": 'ng',
-        "language": 'en',
-        'pageSize': 100
-    })
-    articles = response.json()['articles']
-    if articles:
-        for article in articles:
-            print(article['content'])
-            if article['content'] != None and article['description'] != None:
-                article['content'] = translator.translate(article['content'], dest='ha').text
-                article['description'] = translator.translate(article['description'], dest='ha').text
-    
-            else:
-                article['content'] = translator.translate("Empty", dest='ha').text
-                article['description'] = translator.translate("Empty", dest='ha').text
-    return render_template('index.html', articles=articles)
+    # response = requests.get(
+    #     url=endpoint,
+    #     params={
+    #     "apikey": API_KEY,
+    #     "country": 'ng',
+    #     "language": 'en',
+    #     'pageSize': 100
+    # })
+    # articles = response.json()['articles']
+    # if articles:
+    #     for article in articles:
+    #         print(article['content'])
+    #         if article['content'] != None and article['description'] != None:
+    #             article['content'] = translator.translate(article['content'], dest='ha').text
+    #             article['description'] = translator.translate(article['description'], dest='ha').text
+    #         else:
+    #             article['content'] = translator.translate("Empty", dest='ha').text
+    #             article['description'] = translator.translate("Empty", dest='ha').text
+    return render_template('index.html', articles=[])
 
 
 
