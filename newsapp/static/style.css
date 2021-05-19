@@ -1,0 +1,12 @@
+body {
+    background-color: #FAFAFA;
+}
+
+
+
+
+@media only screen and (min-width: 492px) {
+    .card {
+        width: 29rem
+    }
+}
